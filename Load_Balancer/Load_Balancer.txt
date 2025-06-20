@@ -1,0 +1,38 @@
+
+1. 𝐀𝐩𝐩𝐥𝐢𝐜𝐚𝐭𝐢𝐨𝐧 𝐋𝐨𝐚𝐝 𝐁𝐚𝐥𝐚𝐧𝐜𝐞𝐫 (𝐀𝐋𝐁)
+𝐔𝐬𝐞 𝐰𝐡𝐞𝐧:
+- You need advanced routing based on HTTP(S) content (host, path, header, method, query string).
+- Running web applications, REST APIs, or microservices.
+- You need features like WebSockets, HTTP/2, OIDC authentication, or AWS WAF.
+- You want to route traffic to Lambda, ECS, or EC2 targets.
+𝐃𝐨𝐧’𝐭 𝐮𝐬𝐞 𝐢𝐟:
+Your traffic is not HTTP/S, or you require ultra-low latency for TCP/UDP connections.
+
+2. 𝐍𝐞𝐭𝐰𝐨𝐫𝐤 𝐋𝐨𝐚𝐝 𝐁𝐚𝐥𝐚𝐧𝐜𝐞𝐫 (𝐍𝐋𝐁)
+𝐔𝐬𝐞 𝐰𝐡𝐞𝐧:
+- You need to handle millions of requests per second with very low latency.
+- Your application uses TCP, UDP, or TLS (not HTTP-specific).
+- You require a static IP, need to preserve the client’s IP address, or need TLS offloading at Layer 4.
+- Suitable for gaming, IoT, real-time applications, or gRPC.
+𝐃𝐨𝐧’𝐭 𝐮𝐬𝐞 𝐢𝐟:
+You need HTTP-based advanced routing or Layer 7 features.
+
+3. 𝐆𝐚𝐭𝐞𝐰𝐚𝐲 𝐋𝐨𝐚𝐝 𝐁𝐚𝐥𝐚𝐧𝐜𝐞𝐫 (𝐆𝐋𝐁)
+𝐔𝐬𝐞 𝐰𝐡𝐞𝐧:
+- You need to transparently insert, scale, and manage third-party security appliances (firewalls, IDS/IPS) in your VPC traffic path.
+- You want to centralize and scale network security solutions.
+𝐃𝐨𝐧’𝐭 𝐮𝐬𝐞 𝐟𝐨𝐫:
+Directly serving web or application traffic; it’s for network appliance traffic flow.
+
+4. 𝐂𝐥𝐚𝐬𝐬𝐢𝐜 𝐋𝐨𝐚𝐝 𝐁𝐚𝐥𝐚𝐧𝐜𝐞𝐫 (𝐂𝐋𝐁)
+𝐔𝐬𝐞 𝐰𝐡𝐞𝐧:
+- You have legacy applications that require support for EC2-Classic or simple Layer 4/7 load balancing.
+- You are migrating from older AWS setups and don’t need advanced features.
+𝐃𝐨𝐧’𝐭 𝐮𝐬𝐞 𝐟𝐨𝐫:
+New projects—prefer ALB or NLB for all new workloads.
+
+𝐐𝐮𝐢𝐜𝐤 𝐒𝐮𝐦𝐦𝐚𝐫𝐲 (𝐊𝐞𝐲 𝐏𝐨𝐢𝐧𝐭𝐬)
+- For most modern web applications: Start with ALB.
+- For high-performance, non-HTTP protocols or static IP needs: Use NLB.
+- For adding security appliances: Use GWLB.
+- For legacy systems: Use CLB (only if you must).
